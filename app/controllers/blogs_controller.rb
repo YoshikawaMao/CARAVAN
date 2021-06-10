@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.find(params[:id])
   end
 
   def new
@@ -13,7 +14,9 @@ class BlogsController < ApplicationController
   def create
     blog = Blog.new(blog_params)
     blog.save
-    redirect_to blogs_path
+    #5章で以下の行を修正
+    redirect_to blogs_path(blog.id)
+
   end
 
   def edit
